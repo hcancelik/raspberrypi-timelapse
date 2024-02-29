@@ -1,5 +1,5 @@
 from os import system
-import datetime
+from datetime import datetime as dt
 from time import sleep
 from picamera import PiCamera
 
@@ -25,25 +25,16 @@ sleep(initialSleep)
 # Create a file to indicate that the script is running
 system(f'touch {imagesPath}/running.txt')
 
-# Remove all the jpg files in the images folder
-system(f'rm {imagesPath}/*.jpg')
-
 # Calculate the number of photos to take
 numphotos = int((tlminutes*60)/secondsinterval)
 print("Number of photos to take = ", numphotos)
-
-dateraw= datetime.datetime.now()
-datetimeformat = dateraw.strftime("%Y-%m-%d_%H:%M")
 
 camera = PiCamera()
 camera.rotation = rotation
 camera.resolution = resolution
 
 for i in range(numphotos):
-    camera.capture(f'{imagesPath}/image{0:06d}.jpg'.format(i))
+    camera.capture(f'{imagesPath}/image-{dt.now().strftime("%Y%m%d-%H%M%S")}.jpg')
     sleep(secondsinterval)
-
-# Remove the file that indicates that the script is running
-system(f'rm {imagesPath}/running.txt')
 
 print("Done timelapse.")
