@@ -10,7 +10,7 @@ secondsinterval = 60 * 1 #number of seconds delay between each photo taken
 fps = 30 #frames per second timelapse video
 rotation = 270
 resolution = (1280, 720)
-
+initialSleep = 60 * 5 #number of seconds to sleep before starting the timelapse
 
 # No need to change anything below this line
 
@@ -18,6 +18,9 @@ resolution = (1280, 720)
 if os.path.exists(f'{imagesPath}/running.txt'):
     print("Another instance of the script is running. Exiting...")
     exit()
+
+# Sleep for 5 minutes to give user a chance to cancel the script
+sleep(initialSleep)
 
 # Create a file to indicate that the script is running
 system(f'touch {imagesPath}/running.txt')
