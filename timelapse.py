@@ -5,7 +5,7 @@ from time import sleep
 from picamera import PiCamera
 
 # Variables to change
-path = 'home/pi/timelapse'
+path = '/home/pi/timelapse'
 tlminutes = 60 * 24 #set this to the number of minutes you wish to run your timelapse camera
 secondsinterval = 60 * 1 #number of seconds delay between each photo taken
 fps = 30 #frames per second timelapse video
