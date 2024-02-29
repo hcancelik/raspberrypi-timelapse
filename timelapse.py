@@ -1,5 +1,5 @@
 from os import system
-from os import path
+import os.path
 from datetime import datetime as dt
 from time import sleep
 from picamera import PiCamera
@@ -19,7 +19,7 @@ print(f'{dt.now().strftime("%Y-%m-%d %H:%M:%S")} Starting timelapse...')
 imagesPath = f'{path}/images'
 
 # Check if this script is running on a Raspberry Pi
-if path.exists(f'{path}/running.txt'):
+if os.path.exists(f'{path}/running.txt'):
     print("Another instance of the script is running. Exiting...")
     exit()
 
